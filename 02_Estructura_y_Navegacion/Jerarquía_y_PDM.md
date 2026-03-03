@@ -1,14 +1,14 @@
 # 📂 Estructura de Objetos y Navegación PDM
 
-Para trabajar eficientemente en AS400, es fundamental comprender cómo se organiza la información. A diferencia de Windows (Carpetas/Archivos), el IBM i utiliza una jerarquía de contenedores lógicos.
+Para trabajar con facilidad en AS400, es fundamental comprender cómo se organiza la información. A diferencia de Windows (Carpetas/Archivos), el IBM i utiliza una jerarquía de contenedores lógicos.
 
 ### 1. La Jerarquía de Contenedores
 
-Basado en mi análisis del sistema, la estructura se divide en tres niveles críticos:
+Basado en mi análisis del sistema, la estructura se divide en tres niveles:
 
-* **Biblioteca (Library - *LIB):** Es el contenedor de nivel superior (similar a una carpeta raíz). Ejemplo: `GUI281`.
-* **Objeto (Object - *OBJ):** Dentro de una biblioteca existen objetos de distintos tipos. Los más comunes para desarrollo son los **Archivos Fuente** (ej. `QRPGLESRC`, `QCLSRC`).
-* **Miembro (Member - *MBR):** Es donde reside el código fuente real. Un objeto de tipo archivo fuente puede contener múltiples miembros (ej. `PROG01`, `REPORTE02`).
+* **Biblioteca (Library - *LIB):** Es el contenedor de nivel superior, el contenedor raíz como una 'biblioteca'. Ejemplo: `GUI281`.
+* **Objeto (Object - *OBJ):** Dentro de una biblioteca existen objetos de distintos tipos, que se le puede tomar como 'carpetas'. Ejemplo: `QRPGLESRC`, `QCLSRC`.
+* **Miembro (Member - *MBR):** Es donde reside el código fuente real. Sería el 'archivo individual'. Ejemplo: `PROG01`, `REPORTE02`.
 
 
 
