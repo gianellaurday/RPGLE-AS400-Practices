@@ -1,0 +1,66 @@
+     A* ==========================================================
+     A* ARCHIVO: EMPMDF (DISPLAY FILE)
+     A* PROPOSITO: CONSULTA MAESTRA DE EMPLEADOS
+     A* ==========================================================
+
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      PRINT
+     A* --- DEFINICIÓN DE TECLAS DE CONTROL ---
+     A                                      CA03(03 'SALIR')
+     A                                      CF06(06 'NUEVO')
+     A
+     A* ==========================================================
+     A* FORMATO 1: SFL01 (DETALLE DEL SUBFILE)
+     A* REPRESENTA UNA FILA DE LA TABLA
+     A* ==========================================================
+     A          R SFL01                     SFL
+     A* COL 17 'B' (BOTH): ENTRADA/SALIDA PARA LA OPCION (2, 4)
+     A* PARA ELEGIR SI EDITAR O BORRAR AL EMPLEADO, FIL9 COL2
+     A            OPC            1A  B  9  2
+     A* COL 17 'O' (OUTPUT): DATOS DE SOLO LECTURA DESDE EL PF
+     A* LOS DATOS A MOSTRAR DEL EMPLEADO
+     A            EMPID          5S 0O  9  6
+     A            EMPNOM        30A  O  9 15
+     A            EMPDEP         3A  O  9 47
+     A
+     A* ==========================================================
+     A* FORMATO 2: SFLCTL01 (CONTROL DEL SUBFILE)
+     A* GESTIONA EL COMPORTAMIENTO Y TITULOS
+     A* ==========================================================
+     A* REGISTRO SFLCTL01 QUE CONTIENE A LAS FILAS, 12 X PAG
+     A          R SFLCTL01                  SFLCTL(SFL01)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0012)
+
+     A* --- GESTION DE INDICADORES ---
+     A* IND 71: ENCIENDE EL SUBFILE (MUESTRA LOS DATOS)
+     A  71                                  SFLDSP
+     A* IND 72: ENCIENDE EL CONTROL (MUESTRA LOS TITULOS)
+     A  72                                  SFLDSPCTL
+     A* IND 74: LIMPIA EL SUBFILE ANTES DE CARGARLO
+     A  74                                  SFLCLR
+
+     A* --- CAMPO OCULTO (HIDDEN) PARA POSICIONAR EL CURSOR ---
+     A            RRN            4S 0H      SFLRCDNBR(CURSOR)
+     A
+     A* --- ETIQUETAS Y CABECERA (FILA COLUMNA) ---
+     A                                  2 28'CONSULTA MAESTRA DE EMPLEADOS'
+     A                                      DSPATR(HI)
+     A* --- BUSQUEDA DE EMPLEADO POR NOMBRE ---
+     A                                  4  2'BUSCAR NOMBRE:'
+     A            BUSNOM        15A  B  4 17
+
+     A                                  6  2'OPCIONES: 2=Editar  4=Borrar'
+
+
+     A                                  8  2'OPC'
+     A                                  8  6'ID'
+     A                                  8 15'NOMBRE DEL EMPLEADO'
+     A                                  8 47'DPTO'
+     A
+     A* ==========================================================
+     A* FORMATO 3: FOOTER (PIE DE PAGINA)
+     A* ==========================================================
+     A          R FOOTER                    OVERLAY
+     A                                 24  2'F3=Salir   F6=Nuevo Empleado'
+     A                                      COLOR(BLU)

@@ -1,0 +1,27 @@
+     A* ==========================================================
+     A* EMPMPF: ARCHIVO FISICO - MAESTRO DE EMPLEADOS
+     A* ==========================================================
+     A* EMPEZAR EN COLUMNA 6 PARA DEFINIR
+
+     A* COLUMNA 17 PARA DEFINIR QUE ES UN REGISTRO
+     A* COLUMNA 19 PARA NOMBRE DEL REGISTRO
+     A          R REMPM                    TEXT('REGISTRO MAESTRO DE EMPLEADOS')
+
+     A* DEFINICION DE VARIABLES
+     A* COLUMNA 19 PARA NOMBRE DE LAS VARIABLES
+     A* COLUMNA 34 PARA LA IZQ, TAMAÑO DEL CAMPO
+     A* COLUMNA 35 TIPO DE DATO
+     A* COLUMNA 36-37 PARA DECIMALES
+     A* COLUMNA 45 PARA DESCRIPCION SI FUERA TEXT
+     A* COLUMNA 45 PARA TITULAR LA COLUMNA SI FUERA COLHDG
+     A            EMPID          5P 0       COLHDG('ID EMPLEADO')
+     A            EMPNOM        30A         COLHDG('NOMBRE COMPLETO')
+     A            EMPDEP         3A         COLHDG('DPTO')
+     A            EMPSAL         9P 2       COLHDG('SALARIO')
+     A            EMPEST         1A         COLHDG('ESTADO')
+                                            TEXT('A=Activo, I=Inactivo, V=Vacaciones')
+
+     A* DEFINIR VARIABLES KEY
+     A* COLUMNA 17 PARA DEFINIR QUE ES UN KEY
+     A* ID DE EMPLEADO ES VARIABLE KEY
+     A          K EMPID
