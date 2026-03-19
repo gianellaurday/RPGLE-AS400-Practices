@@ -16,7 +16,7 @@ He organizado mis apuntes y ejercicios de forma modular para facilitar la navega
     * Uso de Data Areas como "Post-its globales" y manipulación de substrings.
 5.  💻 **[Programación en Control Language (CL)](./05_Programacion_CL/Sintaxis_y_Ejemplo.md)**
     * Sintaxis fundamental, tipos de variables y el código fuente de mi programa `PRUEBA2`.
-6.  🗂️ **[Consulta Maestra de Empleados (Subfiles)](06_Consulta_Maestra_Empleados)**
+6.  🗂️ **[Consulta Maestra de Empleados (Subfiles)](06_Ejercicio_Consulta_Empleados)**
     * Desarrollo de un módulo transaccional utilizando DDS (Display Files), Archivos Físicos (PF) y Lógicos (LF). Implementación de arquitectura de Subfiles (`SFLCTL`) con manejo de indicadores.
 
 ---
