@@ -1,6 +1,5 @@
      A* ==========================================================
      A* ARCHIVO: EMPMDF (DISPLAY FILE)
-     A* PROPOSITO: CONSULTA MAESTRA DE EMPLEADOS
      A* ==========================================================
 
      A                                      DSPSIZ(24 80 *DS3)
@@ -10,21 +9,21 @@
      A                                      CF06(06 'NUEVO')
      A
      A* ==========================================================
-     A* FORMATO 1: SFL01 (DETALLE DEL SUBFILE)
+     A* REGISTRO SFL01
      A* REPRESENTA UNA FILA DE LA TABLA
      A* ==========================================================
      A          R SFL01                     SFL
      A* COL 17 'B' (BOTH): ENTRADA/SALIDA PARA LA OPCION (2, 4)
-     A* PARA ELEGIR SI EDITAR O BORRAR AL EMPLEADO, FIL9 COL2
-     A            OPC            1A  B  9  2
+     A* PARA ELEGIR SI EDITAR O BORRAR AL EMPLEADO, FIL9 COL8
+     A            OPC            1A  B  9  8
      A* COL 17 'O' (OUTPUT): DATOS DE SOLO LECTURA DESDE EL PF
      A* LOS DATOS A MOSTRAR DEL EMPLEADO
-     A            EMPID          5S 0O  9  6
-     A            EMPNOM        30A  O  9 15
-     A            EMPDEP         3A  O  9 47
+     A            EMPID          5S 0O  9 13
+     A            EMPNOM        30A  O  9 20
+     A            EMPDEP         3A  O  9 52
      A
      A* ==========================================================
-     A* FORMATO 2: SFLCTL01 (CONTROL DEL SUBFILE)
+     A* REGISTRO SFLCTL01
      A* GESTIONA EL COMPORTAMIENTO Y TITULOS
      A* ==========================================================
      A* REGISTRO SFLCTL01 QUE CONTIENE A LAS FILAS, 12 X PAG
@@ -47,20 +46,54 @@
      A                                  2 28'CONSULTA MAESTRA DE EMPLEADOS'
      A                                      DSPATR(HI)
      A* --- BUSQUEDA DE EMPLEADO POR NOMBRE ---
-     A                                  4  2'BUSCAR NOMBRE:'
-     A            BUSNOM        15A  B  4 17
+     A                                  4  7'BUSCAR NOMBRE:'
+     A            BUSNOM        30A  B  4 22
 
-     A                                  6  2'OPCIONES: 2=Editar  4=Borrar'
+     A                                  6  7'OPCIONES: 2 = Editar  4 = Borrar'
 
-
-     A                                  8  2'OPC'
-     A                                  8  6'ID'
-     A                                  8 15'NOMBRE DEL EMPLEADO'
-     A                                  8 47'DPTO'
+     A                                  8  7'OPC'
+     A                                  8 13'ID'
+     A                                  8 20'NOMBRE DEL EMPLEADO'
+     A                                  8 52'DPTO'
      A
      A* ==========================================================
-     A* FORMATO 3: FOOTER (PIE DE PAGINA)
+     A* FOOTER (PIE DE PAGINA)
      A* ==========================================================
      A          R FOOTER                    OVERLAY
-     A                                 24  2'F3=Salir   F6=Nuevo Empleado'
+     A                                 24  7'F3 = Salir   F6 = Nuevo Empleado'
      A                                      COLOR(BLU)
+
+     A* ==========================================================
+     A* REGISTRO NUEVO EMPLEADO
+     A* ==========================================================
+     A* TITULO DE LA PANTALLA
+     A          R REGNUEVO
+     A                                      OVERLAY
+     A                                      CA12(12 'Cancelar')
+     A                                  4 10'----------------------------------'
+     A                                      COLOR(BLU)
+     A                                  5 10'|         NUEVO EMPLEADO         |'
+     A                                      COLOR(WHT)
+     A                                  6 10'----------------------------------'
+     A                                      COLOR(BLU)
+
+     A* EL NUEVO VALOR DE ID SE ASIGNA A LA VARIABLE NEMPID
+     A                                  8 10'ID EMPLEADO . . .:'
+     A            NEMPID         5S 0B  8 30
+     A*
+     A                                 10 10'NOMBRE COMPLETO .:'
+     A            NEMPNOM       30A  B 10 30
+     A*
+     A                                 12 10'DPTO (3 LETRAS) .:'
+     A            NEMPDEP        3A  B 12 30
+     A*
+     A                                 14 10'SALARIO BASE  . .:'
+     A            NEMPSAL        9S 2B 14 30
+     A* SIEMPRE ACTIVO PORQUE ES NUEVO EMPLEADO
+     A                                 16 10'ESTADO (A=ACT.) .:'
+     A            NEMPEST        1A  B 16 30
+     A*
+     A                                 18 10'----------------------------------'
+     A                                      COLOR(BLU)
+     A                                 19 10' F12 = Cancelar    ENTER = Guardar'
+     A                                      COLOR(WHT)
