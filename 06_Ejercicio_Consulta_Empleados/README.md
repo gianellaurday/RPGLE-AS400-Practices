@@ -21,7 +21,7 @@ Demostrar el dominio en la separación de capas en AS400: Base de datos (Físico
   * Retención de posición del cursor (`SFLRCDNBR`).
   * Búsqueda posicional por nombre de empleado.
 
-* **`EMPMRPG.rpgle` (Programa RPGLE):** *(En desarrollo)*
+* **`EMPMRPG.rpgle` (Programa RPGLE):**
   Programa de control para la lectura del archivo lógico y la carga dinámica de la pantalla utilizando operaciones de Record Level Access (`SETLL`, `READ`, `WRITE`, `EXFMT`).
 
 ## 💡 Notas Técnicas
