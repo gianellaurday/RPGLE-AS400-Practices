@@ -15,12 +15,12 @@
      A          R SFL01                     SFL
      A* COL 17 'B' (BOTH): ENTRADA/SALIDA PARA LA OPCION (2, 4)
      A* PARA ELEGIR SI EDITAR O BORRAR AL EMPLEADO, FIL9 COL8
-     A            OPC            1A  B  9  8
+     A            OPC            1A  B 10 8
      A* COL 17 'O' (OUTPUT): DATOS DE SOLO LECTURA DESDE EL PF
      A* LOS DATOS A MOSTRAR DEL EMPLEADO
-     A            EMPID          5S 0O  9 13
-     A            EMPNOM        30A  O  9 20
-     A            EMPDEP         3A  O  9 52
+     A            EMPID          5S 0O 10 13
+     A            EMPNOM        30A  O 10 20
+     A            EMPDEP         3A  O 10 52
      A
      A* ==========================================================
      A* REGISTRO SFLCTL01
@@ -43,19 +43,33 @@
      A            RRN            4S 0H      SFLRCDNBR(CURSOR)
      A
      A* --- ETIQUETAS Y CABECERA (FILA COLUMNA) ---
-     A                                  2 28'CONSULTA MAESTRA DE EMPLEADOS'
+     A                                  2 25'CONSULTA MAESTRA DE EMPLEADOS'
      A                                      DSPATR(HI)
      A* --- BUSQUEDA DE EMPLEADO POR NOMBRE ---
      A                                  4  7'BUSCAR NOMBRE:'
+     A                                      COLOR(BLU)
      A            BUSNOM        30A  B  4 22
 
      A                                  6  7'OPCIONES: 2 = Editar  4 = Borrar'
 
      A                                  8  7'OPC'
+     A                                      COLOR(BLU)
      A                                  8 13'ID'
+     A                                      COLOR(BLU)
      A                                  8 20'NOMBRE DEL EMPLEADO'
+     A                                      COLOR(BLU)
      A                                  8 52'DPTO'
+     A                                      COLOR(BLU)
+
      A
+     A                                  9  7'---'
+     A                                      COLOR(BLU)
+     A                                  9 13'-----'
+     A                                      COLOR(BLU)
+     A                                  9 20'------------------------------'
+     A                                      COLOR(BLU)
+     A                                  9 52'----'
+     A                                      COLOR(BLU)
      A* ==========================================================
      A* FOOTER (PIE DE PAGINA)
      A* ==========================================================
