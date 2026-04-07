@@ -15,7 +15,7 @@
      A          R SFL01                     SFL
      A* COL 17 'B' (BOTH): ENTRADA/SALIDA PARA LA OPCION (2, 4)
      A* PARA ELEGIR SI EDITAR O BORRAR AL EMPLEADO, FIL9 COL8
-     A            OPC            1A  B 10 8
+     A            OPC            1A  B 10  8
      A* COL 17 'O' (OUTPUT): DATOS DE SOLO LECTURA DESDE EL PF
      A* LOS DATOS A MOSTRAR DEL EMPLEADO
      A            EMPID          5S 0O 10 13
@@ -49,6 +49,8 @@
      A                                  4  7'BUSCAR NOMBRE:'
      A                                      COLOR(BLU)
      A            BUSNOM        30A  B  4 22
+     A* --- OBLIGAR A VALIDAR EL DATO ENTRANTE ---
+     A                                      CHECK(ER)
 
      A                                  6  7'OPCIONES: 2 = Editar  4 = Borrar'
 
