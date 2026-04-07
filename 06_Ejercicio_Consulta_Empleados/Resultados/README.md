@@ -22,11 +22,22 @@ El objetivo principal es demostrar el dominio en la arquitectura de **separació
 Aquí puedes ver cómo luce la aplicación interactiva funcionando en el emulador de terminal.
 
 <p align="center">
-  <img width="749" height="710" alt="Captura de Pantalla 2026-04-07 a la(s) 11 12 29" src="https://github.com/user-attachments/assets/1027a2fa-6e9a-457b-b19d-33a3cdd88732" />
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 11 12 29" src="https://github.com/user-attachments/assets/1027a2fa-6e9a-457b-b19d-33a3cdd88732" />
   <br>
   <em>Imagen 1: Estado inicial de la base de datos (sin registros).</em>
 </p>
 
+<p align="center">
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 11 39 24" src="https://github.com/user-attachments/assets/bfe08fd1-53b2-4332-a485-919e240a11e2" />
+  <br>
+  <em>Imagen 2: Pantalla para crear nuevo empleado.</em>
+</p>
+
+<p align="center">
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 11 38 49" src="https://github.com/user-attachments/assets/8a5e203f-b9b1-4e58-90ab-1fb1bfe46760" />
+  <br>
+  <em>Imagen 3: Lista de empleados ordenada alfabéticamente.</em>
+</p>
 ---
 
 ## 🛠️ Descripción de Archivos y Arquitectura
