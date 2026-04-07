@@ -1,7 +1,46 @@
-### Estado Inicial de la Base de Datos
-Al ejecutar el programa por primera vez, el sistema valida la integridad de los datos. Si el archivo físico `EMPMPF` está vacío, la subfile se inicializa sin registros, manteniendo la estructura de cabecera y controles activa.
-<img width="1062" height="623" alt="BDVACIO" src="https://github.com/user-attachments/assets/84b72913-0db2-4bf7-b75e-ce14f768728a" />
+# 🖥️ Módulo: Consulta Maestra de Empleados (AS400)
 
-### Gestión y Carga de Datos
-Tras la inserción de registros (ya sea mediante la función de alta F6 o carga masiva SQL), el programa utiliza punteros `SETLL` y `READ` para refrescar dinámicamente la lista de empleados.
-<img width="871" height="476" alt="BDDATO" src="https://github.com/user-attachments/assets/e0c80e4a-90a8-40ab-827e-3f615f8b3799" />
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Finalizado-success?style=for-the-badge&logo=github)
+![Lenguaje Principal](https://img.shields.io/badge/Lenguaje-RPG_IV_Fixed-blue?style=for-the-badge&logo=ibm)
+![Plataforma](https://img.shields.io/badge/Plataforma-IBM_i_/_AS400-8A2BE2?style=for-the-badge)
+
+---
+
+## 🚀 Objetivo del Proyecto
+
+Este repositorio contiene el código fuente completo para un programa interactivo diseñado para consultar, filtrar y gestionar el maestro de empleados de una compañía en un entorno **AS400 (IBM i)**.
+
+El objetivo principal es demostrar el dominio en la arquitectura de **separación de capas**:
+1.  **Base de Datos:** (Físicos y Lógicos)
+2.  **Interfaz de Usuario:** (DSPF / Subfiles)
+3.  **Lógica de Negocio:** (RPGLE)
+
+---
+
+## 📸 Demostración Visual (Resultados)
+
+Aquí puedes ver cómo luce la aplicación interactiva funcionando en el emulador de terminal.
+
+<p align="center">
+  <img width="749" height="710" alt="Captura de Pantalla 2026-04-07 a la(s) 11 12 29" src="https://github.com/user-attachments/assets/1027a2fa-6e9a-457b-b19d-33a3cdd88732" />
+  <br>
+  <em>Imagen 1: Estado inicial de la base de datos (sin registros).</em>
+</p>
+
+---
+
+## 🛠️ Descripción de Archivos y Arquitectura
+
+He estructurado el proyecto siguiendo las mejores prácticas de desarrollo en AS400. Así es como se conectan los archivos:
+
+### 📦 Estructura del Directorio
+
+```text
+06_Ejercicio_Consulta_Empleados/
+├── ✨ Resultados/             <-- Capturas de la app corriendo
+│   └── README.md
+├── 🖥️ empmdf.dspf           <-- Interfaz (Pantalla)
+├── 📂 empmpf.pf             <-- Base de Datos (Físico)
+├── 🔍 empmlf.lf             <-- Base de Datos (Lógico, por Nombre)
+├── ⚙️ empmrpg.rpgle         <-- Lógica del Programa (RPG)
+└── 📝 README.md
