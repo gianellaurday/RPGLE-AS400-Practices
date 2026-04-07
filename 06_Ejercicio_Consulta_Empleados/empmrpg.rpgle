@@ -42,8 +42,10 @@
 
      C* MIENTRAS NO SE PRESIONE F3 SEGUIR EN LA PANTALLA
      C                   DOW       *IN03 = *OFF
+     C* SANGUCHITO. ESCRIBE SFLCTL LUEGO EL FOOTER PARA QUE SE MUESTR
+     C                   WRITE     SFLCTL01
      C                   WRITE     FOOTER
-     C                   EXFMT     SFLCTL01
+     C                   READ      SFLCTL01
 
      C* SI PRESIONA F3, SALE DEL PROGRAMA
      C                   IF        *IN03 = *ON
@@ -91,6 +93,13 @@
      C* BUCLE PARA LEER LA BD Y LLENAR EL SUBFILE
      C* DO WHILE NO SEA EL FINAL DE ARCHIVO Y FILAS MENOR A 9999
      C                   DOW       NOT %EOF(EMPMLF) AND RRN < 9999
+     C* --- QUE SOLO MUESTRE LO QUE SE PIDE ---
+     C* Si hay texto, verificamos que el nombre empiece con esas letras
+     C                   IF        BUSNOM <> *BLANKS AND
+     C                             %SCAN(%TRIM(BUSNOM): EMPNOM) <> 1
+     C                   LEAVE
+     C                   ENDIF
+     C* ------------------------------
      C* SUMAR 1 A LA FILA
      C                   ADD       1             RRN
      C* LIMPIAR CAMPO DE OPCION
@@ -105,11 +114,14 @@
      C                   IF        RRN > 0
      C                   EVAL      *IN71 = *ON
      C                   EVAL      *IN72 = *ON
-     C* CURSOR EN LA PRIMERA POSICION
+     C* CURSOR EN LA PRIMERA POSICION, CUANDO HAY DATOS
      C                   EVAL      RRN = 1
      C                   ELSE
      C* SI NO HAY EMPLEADOS SOLO SE MUESTRA ENCABEZADOS
+     C                   EVAL      *IN71 = *OFF
      C                   EVAL      *IN72 = *ON
+     C* CUANDO NO HAY DATOS PARA QUE IGUAL PUEDA MOSTRAR.
+     C                   EVAL      RRN = 1
      C                   ENDIF
      C                   ENDSR
 
