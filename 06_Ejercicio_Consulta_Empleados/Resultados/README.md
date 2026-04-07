@@ -38,6 +38,24 @@ Aquí puedes ver cómo luce la aplicación interactiva funcionando en el emulado
   <br>
   <em>Imagen 3: Lista de empleados ordenada alfabéticamente.</em>
 </p>
+
+<p align="center">
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 13 56 56" src="https://github.com/user-attachments/assets/cc5672ca-7918-4974-9944-f23273cf1c32" />
+  <br>
+  <em>Imagen 4: Búsqueda de empleados.</em>
+</p>
+
+<p align="center">
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 13 55 38" src="https://github.com/user-attachments/assets/59a4f22e-4642-43cf-91e2-e8297729c5ba" />
+  <br>
+  <em>Imagen 5: Editar empleado.</em>
+</p>
+
+<p align="center">
+  <img width="50%" height="50%" alt="Captura de Pantalla 2026-04-07 a la(s) 13 57 32" src="https://github.com/user-attachments/assets/cdaaf92b-fbd4-4064-bbf2-395b35c3f795" />
+  <br>
+  <em>Imagen 6: Eliminar empleado.</em>
+</p>
 ---
 
 ## 🛠️ Descripción de Archivos y Arquitectura
