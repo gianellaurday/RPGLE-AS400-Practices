@@ -56,14 +56,38 @@
      C                   ELSEIF    *IN06 = *ON
      C                   EVAL      *IN06 = *OFF
      C                   EXSR      CREAREMP
-
-     C* SI NO ES NINGUNO DE LOS DOS SE CARGAN LOS DATOS
-     C                   ELSE
+     C* SE CARGAN LOS DATOS CON EL NUEVO EMPLEADO
      C                   EXSR      CARGADATOS
+
+     C* SI NO ES F3 O F6, VER SI MARCO OPCIONES 2 O 4
+     C                   ELSE
+     C* BUSCAR SI SE HAN PUESTO OPC2 O 4 EN LOS DATOS
+     C* READ CHANGE RECORD VA A LA LINEA MODIFICADA DE FRENTE
+     C                   READC     SFL01                                  95
+     C* DO WHILE HAYA MODIFICACIONES EN OPC
+     C                   DOW       *IN95 = *OFF
+
+     C* SI OPCION 2, ES EDITAR
+     C                   IF        OPC = '2'
+     C                   EXSR      EDITAREMP
      C                   ENDIF
 
+     C* SI OPCION 4, ES ELIMINAR
+     C                   IF        OPC = '4'
+     C                   EXSR      BORRAREMP
+     C                   ENDIF
+
+     C* LIMPIAR LA OPCION PARA QUE NO SE QUEDE CON EL NUMERO
+     C                   EVAL      OPC = *BLANKS
+     C                   UPDATE    SFL01
+
+     C                   READC     SFL01                                  95
      C                   ENDDO
 
+     C* REFRESCAR EL SUBFILE CON LOS CAMBIOS
+     C                   EXSR      CARGADATOS
+     C                   ENDIF
+     C                   ENDDO
      C* SI LAST RECORD ON, TERMINA DE LEER DATOS,
      C                   SETON                                        LR
      C                   RETURN
@@ -158,5 +182,65 @@
 
      C* SE EJECUTA CARGADATOS CON LOS NUEVOS DATOS
      C                   EXSR      CARGADATOS
+
+     C                   ENDSR
+
+
+     C* ==========================================================
+     C* SUBRUTINA: EDITAREMP (OPCION 2)
+     C* ==========================================================
+     C     EDITAREMP     BEGSR
+     C* CARGAR DATOS DEL SUBFILE A LA PANTALLA DE EDICION
+     C                   EVAL      EEMPID  = EMPID
+     C                   EVAL      EEMPNOM = EMPNOM
+     C                   EVAL      EEMPDEP = EMPDEP
+     C                   EVAL      EEMPSAL = EMPSAL
+     C                   EVAL      EEMPEST = EMPEST
+
+     C* MOSTRAR LA PANTALLA DE EDICION
+     C                   EXFMT     REGEDITAR
+
+     C* SI NO PRESIONO F12, ACTUALIZAMOS EL ARCHIVO FISICO
+     C                   IF        *IN12 = *OFF
+     C     EMPID         CHAIN     RNUEVO                             90
+     C* SI ESTA APAGADO QUIERE DECIR QUE ENCONTRO EL DATO
+     C                   IF        *IN90 = *OFF
+     C                   EVAL      EMPNOM = EEMPNOM
+     C                   EVAL      EMPDEP = EEMPDEP
+     C                   EVAL      EMPSAL = EEMPSAL
+     C                   EVAL      EMPEST = EEMPEST
+     C                   UPDATE    RNUEVO
+     C                   ENDIF
+     C                   ENDIF
+
+     C                   EVAL      *IN12 = *OFF
+     C                   ENDSR
+
+
+     C* ==========================================================
+     C* SUBRUTINA: BORRAREMP (OPCION 4)
+     C* ==========================================================
+     C     BORRAREMP     BEGSR
+
+     C* TOMAR EL NOMBRE PARA CONFIRMAR
+     C                   EVAL      C_NOM = EMPNOM
+
+     C* MOSTRAR LA VENTANA DE CONFIRMACION
+     C                   EXFMT     CONFIRMAR
+
+     C* SI NO PRESIONO F12
+     C* SIGNIFICA QUE PRESIONO ENTER, CONFIRMAR Y PROCEDE
+     C                   IF        *IN12 = *OFF
+
+     C* BUSCA EL DATO POR MEDIO DEL ID, QUE ES KEY
+     C* USAMOS EL EMPID QUE VIENE DE LA FILA DEL SUBFILE
+     C     EMPID         CHAIN     RNUEVO                             90
+
+     C* SI EL INDICADOR 90 ESTA EN OFF, SIGNIFICA QUE LO ENCONTRO
+     C                   IF        *IN90 = *OFF
+     C* LO BORRA
+     C                   DELETE    RNUEVO
+     C                   ENDIF
+     C                   ENDIF
 
      C                   ENDSR
